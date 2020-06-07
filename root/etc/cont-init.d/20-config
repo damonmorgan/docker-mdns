@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv bash
+
+AUG_BASE="/files/etc/avahi/avahi-daemon.conf"
+
+avahi_set() {
+  if [ $# -lt 3 ]; then
+    >&2 echo "Usage: avahi_set SECTION KEY VALUE"
+    return 1
+  fi
+  augtool set "${AUG_BASE}/$1/$2" "$3"
+}
+
+# Defaults
+SERVER_ENABLE_DBUS=${SERVER_ENABLE_DBUS:-no}
+
+# server section
+if [ -n "${SERVER_HOST_NAME}" ]; then
+  avahi_set "server" "host-name" "${SERVER_HOST_NAME}"
+fi
+if [ -n "${SERVER_DOMAIN_NAME}" ]; then
+  avahi_set "server" "domain-name" "${SERVER_DOMAIN_NAME}"
+fi
+if [ -n "${SERVER_ENABLE_DBUS}" ]; then
+  avahi_set "server" "enable-dbus" "${SERVER_ENABLE_DBUS}"
+fi

@@ -11,13 +11,12 @@ RUN shards build
 RUN ldd /docker_mdns/bin/docker_mdns | tr -s '[:blank:]' '\n' | grep '^/' | \
    xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;'
 
-FROM alpine
+FROM lsiobase/alpine
 
-RUN apk add --update --no-cache avahi
+RUN apk add --update --no-cache \
+      avahi \
+      augeas
 
 COPY --from=builder /docker_mdns/deps /
 COPY --from=builder /docker_mdns/bin/docker_mdns /usr/local/bin/docker_mdns
-COPY entrypoint.sh /opt/entrypoint.sh
-RUN chmod +x /opt/entrypoint.sh
-
-#ENTRYPOINT ["/opt/entrypoint.sh"]
+COPY root/ /
