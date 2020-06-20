@@ -3,7 +3,7 @@ FROM crystallang/crystal:latest AS builder
 RUN apt-get update && \
     apt-get install -y libdbus-1-dev
 
-RUN git clone https://gitlab.com/viraptor/docker_mdns.git
+RUN git clone https://gitlab.com/damon.morgan/docker_mdns.git
 
 WORKDIR /docker_mdns
 RUN shards build

@@ -10,9 +10,6 @@ avahi_set() {
   augtool set "${AUG_BASE}/$1/$2" "$3"
 }
 
-# Defaults
-SERVER_ENABLE_DBUS=${SERVER_ENABLE_DBUS:-no}
-
 # server section
 if [ -n "${SERVER_HOST_NAME}" ]; then
   avahi_set "server" "host-name" "${SERVER_HOST_NAME}"
@@ -23,3 +20,5 @@ fi
 if [ -n "${SERVER_ENABLE_DBUS}" ]; then
   avahi_set "server" "enable-dbus" "${SERVER_ENABLE_DBUS}"
 fi
+
+cp /etc/dbus-1/system.d/avahi-dbus.conf /system-dbus/avahi-dbus.conf
