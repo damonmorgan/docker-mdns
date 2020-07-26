@@ -2,6 +2,8 @@
 
 Docker image for the Avahi mDNS/DNS-SD daemon. Connects to the system D-Bus, publishes the hostname and announces Traefik Host rules. Container requires network host, priveleged and access to the docker sock
 
+Should work on any *nix based system with dbus. Tested on Ubuntu Server.
+
 ## Usage
 
 Here are some example snippets to help you get started creating a container.
@@ -79,7 +81,8 @@ services:
 
 ## TODO
 
-* Remove requirement for priveleged (currently required because of AppArmor policies)
+* If possible remove requirement for priveleged (currently required because of AppArmor policies)
+* If possible remove network host requirment (although it would still need to know the host IP)
 * Make it more generic to work with any reverse proxy (nginx, caddy, traefik, etc.) - potentially use container_name.local
 
 PRs welcomed.
