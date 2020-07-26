@@ -1,6 +1,6 @@
 # mDNS/Avahi Docker Image
 
-Docker image for the Avahi mDNS/DNS-SD daemon. Connects to the system D-Bus and publishes the hostname and announces Traefik Host rules. Container requires network host, priveleged and access to the docker sock
+Docker image for the Avahi mDNS/DNS-SD daemon. Connects to the system D-Bus, publishes the hostname and announces Traefik Host rules. Container requires network host, priveleged and access to the docker sock
 
 ## Usage
 
@@ -33,7 +33,7 @@ Compatible with docker-compose v3 schemas.
 version: "3.8"
 services:
 
-#mdns
+#mDNS
   mdns:
     container_name: mdns
     image: damonmorgan/traefik-mdns
