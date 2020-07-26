@@ -77,6 +77,13 @@ services:
       - "traefik.http.services.whoami.loadbalancer.server.port=80"
 ```
 
+## TODO
+
+* Remove requirement for priveleged (currently required because of AppArmor policies)
+* Make it more generic to work with any reverse proxy (nginx, caddy, traefik, etc.) - potentially use container_name.local
+
+PRs welcomed.
+
 ## Credits
 [https://github.com/flungo-docker/avahi](https://github.com/flungo-docker/avahi)
 
