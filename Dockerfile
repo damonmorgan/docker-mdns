@@ -11,7 +11,7 @@ RUN shards build
 RUN ldd /docker_mdns/bin/docker_mdns | tr -s '[:blank:]' '\n' | grep '^/' | \
    xargs -I % sh -c 'mkdir -p $(dirname deps%); cp % deps%;'
 
-FROM lsiobase/alpine
+FROM ghcr.io/linuxserver/baseimage-alpine:3.19
 
 RUN apk add --update --no-cache \
       avahi \
