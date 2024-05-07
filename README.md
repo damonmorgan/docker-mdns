@@ -1,6 +1,6 @@
 # mDNS/Avahi Docker Image
 
-Docker image for the Avahi mDNS/DNS-SD daemon. Connects to the system D-Bus, publishes the hostname and announces Traefik Host rules. Container requires network host, priveleged and access to the docker sock
+Docker image for the Avahi mDNS/DNS-SD daemon. Connects to the system D-Bus, publishes the hostname and announces Host rules. Container requires network host, priveleged and access to the docker sock
 
 Should work on any *nix based system with dbus. Tested on Ubuntu Server.
 
@@ -73,6 +73,7 @@ services:
     image: "containous/whoami"
     container_name: "simple-service"
     labels:
+      - "mdns.host=whoami.local"
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.local`)"
       - "traefik.http.routers.whoami.entrypoints=web"
