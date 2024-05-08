@@ -4,6 +4,8 @@ Docker image for the Avahi mDNS/DNS-SD daemon. Connects to the system D-Bus, pub
 
 Should work on any *nix based system with dbus. Tested on Ubuntu Server.
 
+Discovery of host names and publishing enabled by [https://gitlab.com/damon.morgan/docker_mdns](https://gitlab.com/damon.morgan/docker_mdns)
+
 ## Usage
 
 Here are some example snippets to help you get started creating a container.
